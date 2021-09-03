@@ -22,12 +22,12 @@ func main() {
 
 	cert, err := tls.LoadX509KeyPair("/home/jenkins/.ssh/redis.crt", "/home/jenkins/.ssh/redis.key")
 	if err != nil {
-		log.Fatal("Certs", err)
+		log.Fatal("Certs", err, cert)
 	}
 
 	caCert, err := ioutil.ReadFile("/home/jenkins/.ssh/CA.crt")
 	if err != nil {
-		log.Fatal("CertsCA", err)
+		log.Fatal("CertsCA", err, caCert)
 	}
 	pool := x509.NewCertPool()
 	pool.AppendCertsFromPEM(caCert)
@@ -42,7 +42,7 @@ func main() {
 			MinVersion: tls.VersionTLS12,
 			//InsecureSkipVerify: true,
 			ServerName:   "redis-server",
-			Certificates: []tls.Certificate{cert,},
+			Certificates: []tls.Certificate{cert},
 			RootCAs:      pool,
 		},
 		
