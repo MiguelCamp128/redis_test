@@ -11,10 +11,10 @@ pipeline {
                  sh 'cd /home/jenkins && go get'
              }
          }
-         stage("SonarQube Analysis") {
-             environment {
-                 scannerHome = tool 'sonar-scanner'
-             }
+        //  stage("SonarQube Analysis") {
+        //      environment {
+        //          scannerHome = tool 'sonar-scanner'
+        //      }
         //      steps {
         //          withSonarQubeEnv('sonarQube') {
         //              sh "${scannerHome}/bin/sonar-scanner \
