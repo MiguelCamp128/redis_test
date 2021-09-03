@@ -48,18 +48,16 @@ func main() {
 		
 	})
 //nada
-fmt.Println("Error en el set")
 	duration := time.Second
 	
 			
 	err = client.Set(ctx, "key", "key-content", 0).Err()
 	if err != nil {
-		fmt.Println("Error en el set")
-		time.Sleep(duration*5)
+		time.Sleep(duration)
 		panic(err)
 	}
 	
-	val, err := client.Get(ctx, "prueba").Result()
+	val, err := client.Get(ctx, "key").Result()
 	if err != nil {
 		panic(err)
 	}
