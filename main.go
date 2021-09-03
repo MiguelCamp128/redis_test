@@ -37,6 +37,8 @@ func main() {
 	client := redis.NewClient(&redis.Options{
 		Addr: net.JoinHostPort(redisHost, "6379"),
 		TLSConfig: &tls.Config{
+			InsecureSkipVerify: true,
+			//ServerName:   "10.10.50.116",
 			Certificates: []tls.Certificate{cert},
 			RootCAs:      pool,
 		},
