@@ -4,16 +4,9 @@ import (
 	//context es para mover información entre una cadena de llamadas, lo requiero redis desde
 	// la v8
 	//NO RECOMENDABLE
-	"context"
-	"crypto/tls"
-	"crypto/x509"
-	"fmt"
-	"io/ioutil"
-	"log"
-	"net"
-	"os"
 
-	"github.com/go-redis/redis/v8"
+	"crypto/tls"
+	"log"
 )
 
 func main() {
@@ -89,4 +82,4 @@ func main() {
 // 	}
 // 	// Output: key value
 // 	// key2 does not exist
-}
+//}
