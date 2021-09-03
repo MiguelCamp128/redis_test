@@ -9,6 +9,7 @@ import (
 	"crypto/x509"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net"
 	"os"
 	"time"
@@ -22,12 +23,12 @@ func main() {
 
 	cert, err := tls.LoadX509KeyPair("/home/jenkins/.ssh/redis.crt", "/home/jenkins/.ssh/redis.key")
 	if err != nil {
-		panic(err)
+		log.Fatal("Certs", err)
 	}
 
 	caCert, err := ioutil.ReadFile("/home/jenkins/.ssh/CA.crt")
 	if err != nil {
-		panic(err)
+		log.Fatal("CertsCA", err)
 	}
 	pool := x509.NewCertPool()
 	pool.AppendCertsFromPEM(caCert)
@@ -39,9 +40,9 @@ func main() {
 		Addr: net.JoinHostPort(redisHost, "6379"),
 		Password: "redis-password", 
 		TLSConfig: &tls.Config{
-			//MinVersion: tls.VersionTLS12,
+			MinVersion: tls.VersionTLS12,
 			//InsecureSkipVerify: true,
-			//ServerName:   "10.10.50.116",
+			ServerName:   "redis-server",
 			Certificates: []tls.Certificate{cert},
 			RootCAs:      pool,
 		},
@@ -54,7 +55,7 @@ func main() {
 	err = client.Set(ctx, "key", "key-content", 0).Err()
 	if err != nil {
 		time.Sleep(duration)
-		panic(err)
+		log.Fatal("SET", err)
 	}
 	
 	val, err := client.Get(ctx, "key").Result()
