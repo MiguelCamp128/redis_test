@@ -42,7 +42,7 @@ func main() {
 			MinVersion: tls.VersionTLS12,
 			//InsecureSkipVerify: true,
 			ServerName:   "redis-server",
-			Certificates: []tls.Certificate{cert},
+			Certificates: []tls.Certificate{cert,},
 			RootCAs:      pool,
 		},
 		
