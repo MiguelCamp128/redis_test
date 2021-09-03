@@ -34,16 +34,18 @@ func main() {
 
 	ctx := context.Background()
 
+
 	client := redis.NewClient(&redis.Options{
 		Addr: net.JoinHostPort(redisHost, "6379"),
+		Password: "redis-password", 
 		TLSConfig: &tls.Config{
-			MinVersion: tls.VersionTLS12,
+			//MinVersion: tls.VersionTLS12,
 			//InsecureSkipVerify: true,
 			//ServerName:   "10.10.50.116",
 			Certificates: []tls.Certificate{cert},
 			RootCAs:      pool,
 		},
-		Password: "redis-password", 
+		
 	})
 //nada
 	duration := time.Second
