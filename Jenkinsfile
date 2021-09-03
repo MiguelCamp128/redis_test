@@ -1,9 +1,14 @@
 pipeline {
      agent { label 'agente_monitor' }
      stages {
+         stage("init") {
+            steps {
+                sh 'cp -r ./* /home/jenkins'
+            }
+        }
          stage("get libraries") {
              steps {
-                 sh 'go get'
+                 sh 'cd /home/jenkins && go get'
              }
          }
          stage("SonarQube Analysis") {
@@ -25,7 +30,7 @@ pipeline {
          }
          stage("start monitor") {
              steps {
-                 sh 'go run .'
+                 sh 'cd /home/jenkins && go run .'
              }
          }
      }
