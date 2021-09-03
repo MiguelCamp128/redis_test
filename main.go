@@ -6,26 +6,40 @@ import (
 	//NO RECOMENDABLE
 
 	"crypto/tls"
+	"crypto/x509"
+	"io/ioutil"
 	"log"
+
+	"github.com/go-redis/redis/v8"
 )
-
 func main() {
-
-
-
-	
-	
-		cert, err := tls.LoadX509KeyPair("/home/jenkins/.ssh/redis.crt", "/home/jenkins/.ssh/redis.key")
-		if err != nil {
-			log.Fatal(err)
-		}
-		cfg := &tls.Config{Certificates: []tls.Certificate{cert}}
-		listener, err := tls.Listen("10.10.50.116", ":6379", cfg)
-		if err != nil {
-			log.Fatal(err)
-		}
-		_ = listener
-	}
+	client:=nil
+cert, err := tls.LoadX509KeyPair("home/jenkins/.ssh/redis.crt", "home/jenkins/.ssh/redis.key")
+if err != nil {
+	log.Fatal(err)
+}
+caCert, err := ioutil.ReadFile("home/jenkins/.ssh/ca.crt")
+if err != nil {
+	log.Fatal(err)
+}
+caCertPool := x509.NewCertPool()
+caCertPool.AppendCertsFromPEM(caCert)
+if client == nil {
+	redis.NewClient(&redis.Options{
+		Addr:     "10.10.50.116:6379",
+		Password: "redis-server",
+		DB:       0,
+		TLSConfig: &tls.Config{
+			RootCAs: caCertPool,
+			Certificates: []tls.Certificate{
+				cert,
+			},
+		},
+	})
+}
+return 
+}
+// func main() {
 		
 // 	redisHost := os.Getenv("10.10.50.116") // e.g. "1.2.3.4", "127.0.0.1", "localhost", "redis.acmecorp.com"
 
@@ -82,4 +96,4 @@ func main() {
 // 	}
 // 	// Output: key value
 // 	// key2 does not exist
-//}
+// }
