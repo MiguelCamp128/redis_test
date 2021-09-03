@@ -7,13 +7,14 @@ import (
 
 	"crypto/tls"
 	"crypto/x509"
+	"fmt"
 	"io/ioutil"
 	"log"
 
 	"github.com/go-redis/redis/v8"
 )
 func main() {
-	client:=nil
+
 cert, err := tls.LoadX509KeyPair("home/jenkins/.ssh/redis.crt", "home/jenkins/.ssh/redis.key")
 if err != nil {
 	log.Fatal(err)
@@ -24,8 +25,8 @@ if err != nil {
 }
 caCertPool := x509.NewCertPool()
 caCertPool.AppendCertsFromPEM(caCert)
-if client == nil {
-	redis.NewClient(&redis.Options{
+
+	client:=redis.NewClient(&redis.Options{
 		Addr:     "10.10.50.116:6379",
 		Password: "redis-server",
 		DB:       0,
@@ -36,9 +37,10 @@ if client == nil {
 			},
 		},
 	})
+	fmt.Println(client)
 }
-return 
-}
+
+
 // func main() {
 		
 // 	redisHost := os.Getenv("10.10.50.116") // e.g. "1.2.3.4", "127.0.0.1", "localhost", "redis.acmecorp.com"
