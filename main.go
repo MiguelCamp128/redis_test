@@ -18,7 +18,7 @@ import (
 
 func main() {
 		
-	redisHost := os.Getenv("localhost") // e.g. "1.2.3.4", "127.0.0.1", "localhost", "redis.acmecorp.com"
+	redisHost := os.Getenv("10.10.50.116") // e.g. "1.2.3.4", "127.0.0.1", "localhost", "redis.acmecorp.com"
 
 	cert, err := tls.LoadX509KeyPair("./tls/redis.crt", "./tls/redis.key")
 	if err != nil {
