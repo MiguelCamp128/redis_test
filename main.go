@@ -27,7 +27,7 @@ func main() {
 
 	caCert, err := ioutil.ReadFile("/home/jenkins/.ssh/CA.crt")
 	if err != nil {
-		log.Fatal("CertsCA", err, caCert)
+		log.Fatal("CertsCA2", err, caCert)
 	}
 	pool := x509.NewCertPool()
 	pool.AppendCertsFromPEM(caCert)
