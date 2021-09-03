@@ -12,7 +12,6 @@ import (
 	"log"
 	"net"
 	"os"
-	"time"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -49,14 +48,14 @@ func main() {
 		
 	})
 //nada
-	duration := time.Second
+	//duration := time.Second
 	
 			
-	err = client.Set(ctx, "key", "key-content", 0).Err()
-	if err != nil {
-		time.Sleep(duration)
-		log.Fatal("SET", err)
-	}
+	// err = client.Set(ctx, "key", "key-content", 0).Err()
+	// if err != nil {
+	// 	time.Sleep(duration)
+	// 	log.Fatal("SET", err)
+	// }
 	
 	val, err := client.Get(ctx, "key").Result()
 	if err != nil {
