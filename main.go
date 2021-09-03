@@ -15,11 +15,11 @@ import (
 )
 func main() {
 
-cert, err := tls.LoadX509KeyPair("home/jenkins/.ssh/redis.crt", "home/jenkins/.ssh/redis.key")
+cert, err := tls.LoadX509KeyPair("/home/jenkins/.ssh/redis.crt", "/home/jenkins/.ssh/redis.key")
 if err != nil {
 	log.Fatal(err)
 }
-caCert, err := ioutil.ReadFile("home/jenkins/.ssh/ca.crt")
+caCert, err := ioutil.ReadFile("/home/jenkins/.ssh/ca.crt")
 if err != nil {
 	log.Fatal(err)
 }
