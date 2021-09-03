@@ -59,7 +59,7 @@ func main() {
 	
 	val, err := client.Get(ctx, "key").Result()
 	if err != nil {
-		panic(err)
+		log.Fatal("GET", err)
 	}
 	fmt.Println("key", val)
 
