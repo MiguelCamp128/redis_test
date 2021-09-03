@@ -48,6 +48,7 @@ func main() {
 		
 	})
 //nada
+fmt.Println("Error en el set")
 	duration := time.Second
 	
 			
