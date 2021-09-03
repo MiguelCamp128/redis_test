@@ -43,7 +43,7 @@ func main() {
 		},
 		Password: "redis-password", 
 	})
-
+//nada
 	duration := time.Second
 	
 			
