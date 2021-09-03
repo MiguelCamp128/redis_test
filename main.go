@@ -20,7 +20,7 @@ func main() {
 		
 	redisHost := os.Getenv("10.10.50.116") // e.g. "1.2.3.4", "127.0.0.1", "localhost", "redis.acmecorp.com"
 
-	cert, err := tls.LoadX509KeyPair("/home/jenkins/.ssh/redis.crt", "(/home/jenkins/.ssh/redis.key")
+	cert, err := tls.LoadX509KeyPair("/home/jenkins/.ssh/redis.crt", "/home/jenkins/.ssh/redis.key")
 	if err != nil {
 		panic(err)
 	}
