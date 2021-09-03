@@ -19,7 +19,7 @@ cert, err := tls.LoadX509KeyPair("/home/jenkins/.ssh/redis.crt", "/home/jenkins/
 if err != nil {
 	log.Fatal(err)
 }
-caCert, err := ioutil.ReadFile("/home/jenkins/.ssh/ca.crt")
+caCert, err := ioutil.ReadFile("/home/jenkins/.ssh/CA.crt")
 if err != nil {
 	log.Fatal(err)
 }
