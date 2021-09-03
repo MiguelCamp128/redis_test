@@ -1,5 +1,5 @@
 pipeline {
-     agent { label 'agente_backend' }
+     agent { label 'agente_monitor' }
      stages {
          stage("get libraries") {
              steps {
@@ -23,7 +23,7 @@ pipeline {
                  }
              }
          }
-         stage("start backend") {
+         stage("start monitor") {
              steps {
                  sh 'go run .'
              }
