@@ -29,15 +29,16 @@ caCertPool := x509.NewCertPool()
 caCertPool.AppendCertsFromPEM(caCert)
 
 	client:=redis.NewClient(&redis.Options{
-		Addr:     "10.10.50.116:6379",
+		//Addr:     "10.10.50.116:6379",
 		Password: "redis-password",
 		DB:       0,
 		TLSConfig: &tls.Config{
+			ServerName: "redis.olt.com",
 			RootCAs: caCertPool,
 			Certificates: []tls.Certificate{
 				cert,
 			},
-		InsecureSkipVerify: true,
+		//InsecureSkipVerify: true,
 		},
 		
 	})
