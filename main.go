@@ -37,7 +37,9 @@ caCertPool.AppendCertsFromPEM(caCert)
 			Certificates: []tls.Certificate{
 				cert,
 			},
+		InsecureSkipVerify: true,
 		},
+		
 	})
 	fmt.Println(client)
 
