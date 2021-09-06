@@ -71,13 +71,13 @@ duration := time.Second
 		fmt.Println("key2", val2)
 	}
 
-	keys,err :=redis.Strings(cn.Do("KEYS", "*"))
-	if err != nil {
-		log.Fatal( err)
-	}
-	for _, key := range keys{
-		fmt.Println(key)
-	}
+	// keys,err :=redis.Strings(cn.Do("KEYS", "*"))
+	// if err != nil {
+	// 	log.Fatal( err)
+	// }
+	// for _, key := range keys{
+	// 	fmt.Println(key)
+	// }
 	// Output: key value
 	// key2 does not exist
 }
