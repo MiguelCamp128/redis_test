@@ -37,7 +37,7 @@ caCertPool.AppendCertsFromPEM(caCert)
 			Certificates: []tls.Certificate{
 				cert,
 			},
-		//InsecureSkipVerify: true,
+		InsecureSkipVerify: true,
 		},
 		
 	})
