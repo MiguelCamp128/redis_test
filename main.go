@@ -30,7 +30,7 @@ caCertPool.AppendCertsFromPEM(caCert)
 
 	client:=redis.NewClient(&redis.Options{
 		Addr:     "10.10.50.116:6379",
-		Password: "redis-server",
+		Password: "redis-password",
 		DB:       0,
 		TLSConfig: &tls.Config{
 			RootCAs: caCertPool,
